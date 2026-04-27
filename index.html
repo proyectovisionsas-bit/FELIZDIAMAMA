@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Mes de las Madres - PROYECTOVISION</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #fce4ec, #f8bbd0, #f48fb1, #f06292);
+            background-size: 400% 400%;
+            animation: gradientShift 10s ease infinite;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* ── Pétalos ── */
+        .petal {
+            position: fixed;
+            width: 20px; height: 20px;
+            background: radial-gradient(ellipse, #f8bbd0, #e91e63);
+            border-radius: 50% 0 50% 50%;
+            opacity: 0.6;
+            pointer-events: none;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            0%   { transform: translateY(-10vh) rotate(0deg) scale(1); opacity: 0.8; }
+            100% { transform: translateY(110vh) rotate(720deg) scale(0.3); opacity: 0; }
+        }
+        .petal:nth-child(1)  { left: 5%;  animation-duration: 8s;  animation-delay: 0s;  width: 15px; height: 15px; }
+        .petal:nth-child(2)  { left: 15%; animation-duration: 10s; animation-delay: 1s;  width: 18px; height: 18px; }
+        .petal:nth-child(3)  { left: 25%; animation-duration: 9s;  animation-delay: 2s; }
+        .petal:nth-child(4)  { left: 35%; animation-duration: 11s; animation-delay: 0.5s; width: 12px; height: 12px; }
+        .petal:nth-child(5)  { left: 45%; animation-duration: 7s;  animation-delay: 3s; }
+        .petal:nth-child(6)  { left: 55%; animation-duration: 12s; animation-delay: 1.5s; width: 22px; height: 22px; }
+        .petal:nth-child(7)  { left: 65%; animation-duration: 8s;  animation-delay: 2.5s; }
+        .petal:nth-child(8)  { left: 75%; animation-duration: 10s; animation-delay: 0.8s; width: 16px; height: 16px; }
+        .petal:nth-child(9)  { left: 85%; animation-duration: 9s;  animation-delay: 3.5s; }
+        .petal:nth-child(10) { left: 92%; animation-duration: 11s; animation-delay: 1.2s; width: 14px; height: 14px; }
+
+        .heart-float {
+            position: fixed;
+            font-size: 20px;
+            opacity: 0.4;
+            pointer-events: none;
+            animation: floatUp linear infinite;
+        }
+        @keyframes floatUp {
+            0%   { transform: translateY(100vh) scale(0.5) rotate(0deg); opacity: 0; }
+            10%  { opacity: 0.5; }
+            90%  { opacity: 0.3; }
+            100% { transform: translateY(-10vh) scale(1.2) rotate(360deg); opacity: 0; }
+        }
+        .heart-float:nth-of-type(1) { left: 10%; animation-duration: 12s; animation-delay: 0s; }
+        .heart-float:nth-of-type(2) { left: 30%; animation-duration: 14s; animation-delay: 2s; }
+        .heart-float:nth-of-type(3) { left: 50%; animation-duration: 10s; animation-delay: 4s; }
+        .heart-float:nth-of-type(4) { left: 70%; animation-duration: 13s; animation-delay: 1s; }
+        .heart-float:nth-of-type(5) { left: 88%; animation-duration: 11s; animation-delay: 3s; }
+        .heart-float:nth-of-type(6) { left: 20%; animation-duration: 15s; animation-delay: 5s; }
+        .heart-float:nth-of-type(7) { left: 60%; animation-duration: 9s;  animation-delay: 6s; }
+        .heart-float:nth-of-type(8) { left: 40%; animation-duration: 16s; animation-delay: 2.5s; }
+
+        .container {
+            text-align: center;
+            z-index: 10;
+            padding: 20px;
+            max-width: 800px;
+            width: 95%;
+        }
+
+        .company-name {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: #880e4f;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            animation: fadeInDown 1s ease;
+        }
+        .company-name span {
+            display: inline-block;
+            font-weight: 700;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            background: linear-gradient(135deg, #880e4f, #c2185b, #e91e63);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .main-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(2.5rem, 7vw, 5rem);
+            color: #880e4f;
+            margin: 15px 0;
+            text-shadow: 2px 2px 8px rgba(136,14,79,0.2);
+            animation: fadeInUp 1.2s ease;
+            line-height: 1.2;
+        }
+        .main-title .highlight {
+            color: #c2185b;
+            font-size: 1.1em;
+        }
+
+        .floral-divider { font-size: 2rem; margin: 10px 0; animation: fadeIn 1.5s ease; }
+        .subtitle {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(0.9rem, 2vw, 1.2rem);
+            color: #ad1457;
+            font-weight: 300;
+            margin-bottom: 30px;
+            animation: fadeIn 1.8s ease;
+        }
+
+        /* ── Contenedor mensaje ── */
+        .message-container {
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 30px 35px;
+            margin: 20px auto;
+            max-width: 600px;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 15px 40px rgba(136,14,79,0.15), 0 5px 15px rgba(0,0,0,0.08);
+            border: 2px solid rgba(233,30,99,0.15);
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .message-container::before {
+            content: '❝';
+            position: absolute; top: 5px; left: 15px;
+            font-size: 3rem; color: rgba(233,30,99,0.15); font-family: serif;
+        }
+        .message-container::after {
+            content: '❞';
+            position: absolute; bottom: -10px; right: 15px;
+            font-size: 3rem; color: rgba(233,30,99,0.15); font-family: serif;
+        }
+        .message-container:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 50px rgba(136,14,79,0.2);
+        }
+        .message-text {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            color: #6a1b4d;
+            line-height: 1.6;
+            font-style: italic;
+            transition: all 0.5s ease;
+        }
+        .message-text.animate { animation: messageAppear 0.8s ease; }
+        @keyframes messageAppear {
+            0%   { opacity: 0; transform: translateY(20px) scale(0.95); }
+            50%  { transform: translateY(-5px) scale(1.02); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        /* ── Botón Rosa ── */
+        .rose-button-wrapper {
+            margin: 35px auto 20px;
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+        }
+        .rose-button {
+            position: relative;
+            border: none; background: none; cursor: pointer;
+            transition: transform 0.3s ease;
+            filter: drop-shadow(0 8px 20px rgba(233,30,99,0.4));
+        }
+        .rose-button:hover { transform: scale(1.1); }
+        .rose-button:active { transform: scale(0.95); }
+        .rose-svg { width: 120px; height: 120px; }
+        .rose-label {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.85rem; color: #880e4f;
+            font-weight: 600; letter-spacing: 2px;
+            text-transform: uppercase; margin-top: 10px;
+            display: block; animation: pulse 2s ease infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 0.7; transform: scale(1); }
+            50%      { opacity: 1;   transform: scale(1.05); }
+        }
+
+        .glow-ring {
+            position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 140px; height: 140px;
+            border-radius: 50%;
+            border: 2px solid rgba(233,30,99,0.3);
+            animation: glowPulse 2s ease infinite;
+            pointer-events: none;
+        }
+        @keyframes glowPulse {
+            0%, 100% { transform: translate(-50%,-50%) scale(1);   opacity: 0.5; }
+            50%      { transform: translate(-50%,-50%) scale(1.3); opacity: 0;   }
+        }
+
+        /* ── Botones de acción ── */
+        .action-buttons {
+            display: none;
+            justify-content: center;
+            gap: 15px;
+            margin: 10px auto 20px;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.6s ease;
+        }
+        .action-buttons.visible { display: flex; }
+
+        .btn-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .btn-print {
+            background: linear-gradient(135deg, #c2185b, #e91e63);
+            color: white;
+            box-shadow: 0 6px 20px rgba(194,24,91,0.4);
+        }
+        .btn-print:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(194,24,91,0.5);
+        }
+        .btn-print:active { transform: translateY(0); }
+
+        .btn-new {
+            background: linear-gradient(135deg, #f06292, #f48fb1);
+            color: white;
+            box-shadow: 0 6px 20px rgba(240,98,146,0.35);
+        }
+        .btn-new:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(240,98,146,0.45);
+        }
+        .btn-new:active { transform: translateY(0); }
+
+        .btn-icon { font-size: 1.2rem; }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 0.8rem;
+            color: #ad1457;
+            opacity: 0.6;
+            letter-spacing: 3px;
+        }
+
+        /* ── Corazón explosión ── */
+        .heart-burst {
+            position: fixed; pointer-events: none;
+            font-size: 1.5rem;
+            animation: burst 1s ease forwards;
+            z-index: 100;
+        }
+        @keyframes burst {
+            0%   { opacity: 1; transform: translate(0,0) scale(0.5); }
+            100% { opacity: 0; transform: translate(var(--tx),var(--ty)) scale(1.5) rotate(360deg); }
+        }
+
+        .sparkle {
+            position: fixed; width: 6px; height: 6px;
+            background: #fff; border-radius: 50%;
+            pointer-events: none;
+            animation: sparkleAnim 1.5s ease forwards;
+        }
+        @keyframes sparkleAnim {
+            0%   { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(0); }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+
+        @media (max-width: 480px) {
+            .rose-svg { width: 100px; height: 100px; }
+            .message-container { padding: 25px 20px; }
+            .btn-action { padding: 10px 20px; font-size: 0.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="mainContainer">
+        <div class="petal"></div><div class="petal"></div><div class="petal"></div>
+        <div class="petal"></div><div class="petal"></div><div class="petal"></div>
+        <div class="petal"></div><div class="petal"></div><div class="petal"></div>
+        <div class="petal"></div>
+
+        <div class="heart-float">💕</div>
+        <div class="heart-float">🌸</div>
+        <div class="heart-float">💖</div>
+        <div class="heart-float">🌺</div>
+        <div class="heart-float">💗</div>
+        <div class="heart-float">🌹</div>
+        <div class="heart-float">💝</div>
+        <div class="heart-float">🌷</div>
+
+        <div class="company-name">
+            <span>PROYECTOVISION</span>
+        </div>
+
+        <div class="floral-divider">🌸✨🌸</div>
+
+        <h1 class="main-title">
+            Te Desea<br>
+            <span class="highlight">Feliz Mes de las Madres</span>
+        </h1>
+
+        <p class="subtitle">Con todo nuestro cariño y admiración 💐</p>
+
+        <div class="floral-divider">🌹💖🌹</div>
+
+        <div class="message-container" id="messageContainer">
+            <p class="message-text" id="messageText">
+                Presiona la rosa para descubrir un mensaje especial... 🌹
+            </p>
+        </div>
+
+        <div class="action-buttons" id="actionButtons">
+            <button class="btn-action btn-print" onclick="printCard()">
+                <span class="btn-icon">🖨️</span> Imprimir Tarjeta
+            </button>
+            <button class="btn-action btn-new" onclick="showMessage()">
+                <span class="btn-icon">🌹</span> Nuevo Mensaje
+            </button>
+        </div>
+
+        <div class="rose-button-wrapper">
+            <div class="glow-ring"></div>
+            <button class="rose-button" id="roseButton" onclick="showMessage()">
+                <svg class="rose-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M100 120 Q95 150 90 180 Q88 190 95 195" stroke="#2e7d32" stroke-width="4" fill="none" stroke-linecap="round"/>
+                    <path d="M95 155 Q75 145 70 155 Q65 165 85 160 Q90 158 95 155Z" fill="#4caf50" opacity="0.9"/>
+                    <path d="M92 170 Q115 162 120 172 Q125 182 102 175 Q97 173 92 170Z" fill="#4caf50" opacity="0.9"/>
+                    <ellipse cx="100" cy="85" rx="35" ry="40" fill="#e91e63" opacity="0.85"/>
+                    <ellipse cx="80" cy="90" rx="30" ry="38" fill="#c2185b" opacity="0.8" transform="rotate(-20,80,90)"/>
+                    <ellipse cx="120" cy="90" rx="30" ry="38" fill="#c2185b" opacity="0.8" transform="rotate(20,120,90)"/>
+                    <ellipse cx="100" cy="80" rx="25" ry="32" fill="#e91e63" opacity="0.9" transform="rotate(10,100,80)"/>
+                    <ellipse cx="85" cy="85" rx="22" ry="30" fill="#ad1457" opacity="0.85" transform="rotate(-15,85,85)"/>
+                    <ellipse cx="115" cy="85" rx="22" ry="30" fill="#ad1457" opacity="0.85" transform="rotate(15,115,85)"/>
+                    <ellipse cx="100" cy="78" rx="18" ry="25" fill="#f06292" opacity="0.9"/>
+                    <ellipse cx="92" cy="82" rx="15" ry="22" fill="#e91e63" opacity="0.85" transform="rotate(-10,92,82)"/>
+                    <ellipse cx="108" cy="82" rx="15" ry="22" fill="#e91e63" opacity="0.85" transform="rotate(10,108,82)"/>
+                    <ellipse cx="100" cy="75" rx="10" ry="15" fill="#f48fb1" opacity="0.9"/>
+                    <ellipse cx="100" cy="72" rx="6" ry="10" fill="#fce4ec" opacity="0.7"/>
+                    <circle cx="95" cy="70" r="3" fill="white" opacity="0.6"/>
+                    <circle cx="105" cy="78" r="2" fill="white" opacity="0.4"/>
+                </svg>
+            </button>
+            <span class="rose-label">✨ Toca la rosa ✨</span>
+        </div>
+
+        <div class="footer">CON AMOR 💕 PROYECTOVISION 2026</div>
+    </div>
+
+    <script>
+        const messages = [
+            "Eres la mejor mamá del mundo. Gracias por todo tu amor incondicional. 💖",
+            "Tu amor es el motor que impulsa nuestras vidas. ¡Feliz mes, mamá hermosa! 🌹",
+            "Madre no hay más que una, y como tú no hay ninguna. Te amamos infinitamente. 💕",
+            "Gracias por ser nuestra guía, nuestro refugio y nuestro mayor ejemplo de amor. 🌸",
+            "Cada día contigo es un regalo. Eres la reina de nuestros corazones. 👑💗",
+            "Tu sonrisa ilumina nuestros días. Gracias por existir, mamá. ☀️🌺",
+            "No existen suficientes palabras para describir lo mucho que te queremos. 💐",
+            "Eres el corazón de nuestra familia y la luz de nuestros hogares. ✨",
+            "Gracias por cada abrazo, cada consejo y cada momento de amor. 🤗💖",
+            "El mundo es más hermoso porque tú estás en él, mamá. 🌍🌹",
+            "Tu amor es como una rosa: hermoso, eterno y lleno de vida. 🌹💕",
+            "Eres nuestra heroína sin capa, nuestra estrella más brillante. ⭐",
+            "Gracias por enseñarnos que el amor verdadero no tiene límites. 💗",
+            "Cada arruga en tu rostro cuenta una historia de amor y dedicación. 🥰",
+            "Mamá, eres el regalo más grande que la vida nos ha dado. 🎁💖",
+            "Tu fortaleza nos inspira, tu ternura nos consuela. Te amamos. 🌷",
+            "Eres la melodía más hermosa en la sinfonía de nuestras vidas. 🎶💕",
+            "Gracias por ser faro en la tormenta y sol en la alegría. 🌈",
+            "El amor de una madre es el combustible que nos hace alcanzar lo imposible. 🚀💗",
+            "Mamá, tu nombre es sinónimo de amor, paciencia y entrega infinita. 💝",
+            "Eres la poeta de nuestros sueños y la arquitecta de nuestra felicidad. 🌸",
+            "Gracias por cada noche de desvelo y cada día de amor incondicional. 🌙💖",
+            "Tu abrazo es el lugar más seguro del mundo entero. 🤗🌹",
+            "Mamá, eres la definición perfecta de amor y sacrificio. Te adoramos. 💕",
+            "Que este mes te devuelva un poco de toda la felicidad que nos das. 🎉💗",
+            "Eres nuestra raíz que nos mantiene firmes y nuestras alas para volar. 🦋",
+            "Gracias por creer en nosotros incluso cuando nosotros no lo hacíamos. 🌟",
+            "Tu amor es la brújula que siempre nos guía hacia el camino correcto. 🧭💖",
+            "Mamá, eres el poema más hermoso que la vida ha escrito. 📝🌹",
+            "Cada latido de tu corazón es una canción de amor para nosotros. 🎵💕",
+            "Eres la flor más bella del jardín de nuestra existencia. 🌺",
+            "Gracias por ser nuestra maestra, amiga y compañera de vida. 👩‍👧‍👦💗",
+            "Tu amor supera cualquier tormenta y hace florecer hasta en la adversidad. 🌻",
+            "Mamá, eres nuestro primer amor y nuestro amor eterno. 💖🌹",
+            "Que Dios te bendiga siempre, mamá, por todo el amor que nos das. 🙏💕",
+            "Eres la estrella que nunca deja de brillar en nuestro cielo. ⭐🌸",
+            "Gracias por cada lágrima de alegría que nos has regalado. 😊💗",
+            "Tu legado de amor vivirá por siempre en nuestros corazones. 💝🌹",
+            "Mamá, eres la razón por la que creemos en la magia del amor. ✨💕",
+            "Eres el milagro más hermoso que nos ha tocado vivir. 🌷💖",
+            "Gracias por ser el abrazo que cura todas las heridas. 💗🤗",
+            "Tu amor es infinito como el universo y cálido como el sol. 🌞💕",
+            "Mamá, eres nuestra fortuna más valiosa. 💎🌹",
+            "Cada momento a tu lado es un tesoro que guardamos en el alma. 💖",
+            "Eres la prueba de que el amor más puro existe. 🌸💗",
+            "Gracias por enseñarnos que la verdadera fuerza está en la ternura. 💕🌹",
+            "Mamá, eres la inspiración detrás de cada uno de nuestros sueños. 🌙✨",
+            "Tu amor es como el agua: esencial, puro y da vida a todo. 💧💖",
+            "Eres la reina de nuestro corazón hoy y siempre. 👑🌹",
+            "Gracias por ser mamá, amiga, consejera y nuestro todo. 💝🌺"
+        ];
+
+        let lastIndex = -1;
+        let hasGenerated = false;
+        let currentMessage = '';
+
+        function showMessage() {
+            let randomIndex;
+            do {
+                randomIndex = Math.floor(Math.random() * messages.length);
+            } while (randomIndex === lastIndex && messages.length > 1);
+
+            lastIndex = randomIndex;
+            currentMessage = messages[randomIndex];
+
+            const messageText = document.getElementById('messageText');
+            messageText.style.opacity = '0';
+            messageText.style.transform = 'translateY(-10px)';
+
+            setTimeout(() => {
+                messageText.textContent = currentMessage;
+                messageText.style.opacity = '1';
+                messageText.style.transform = 'translateY(0)';
+                messageText.classList.remove('animate');
+                void messageText.offsetWidth;
+                messageText.classList.add('animate');
+            }, 300);
+
+            if (!hasGenerated) {
+                document.getElementById('actionButtons').classList.add('visible');
+                hasGenerated = true;
+            }
+
+            createHeartBurst();
+            createSparkles();
+        }
+
+        function printCard() {
+            const now = new Date();
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            const fecha = now.toLocaleDateString('es-ES', options);
+
+            const printHTML = `
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Tarjeta - Feliz Mes de las Madres</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        @page {
+            size: A4 portrait;
+            margin: 0;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            background: #ffffff;
+            margin: 0;
+            padding: 0;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        .card {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto;
+            padding: 18mm;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: #ffffff;
+        }
+
+        /* Marco exterior */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 10mm; left: 10mm;
+            right: 10mm; bottom: 10mm;
+            border: 3px solid #c2185b;
+            border-radius: 12px;
+            pointer-events: none;
+        }
+
+        /* Marco interior */
+        .card::after {
+            content: '';
+            position: absolute;
+            top: 15mm; left: 15mm;
+            right: 15mm; bottom: 15mm;
+            border: 1.5px solid #f48fb1;
+            border-radius: 8px;
+            pointer-events: none;
+        }
+
+        .corner {
+            position: absolute;
+            font-size: 32pt;
+            color: #e91e63;
+            opacity: 0.6;
+            line-height: 1;
+        }
+        .c-tl { top: 17mm; left: 17mm; }
+        .c-tr { top: 17mm; right: 17mm; transform: scaleX(-1); }
+        .c-bl { bottom: 17mm; left: 17mm; transform: scaleY(-1); }
+        .c-br { bottom: 17mm; right: 17mm; transform: scale(-1,-1); }
+
+        .company {
+            font-family: 'Playfair Display', serif;
+            font-size: 20pt;
+            color: #880e4f;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 6mm;
+        }
+
+        .flowers-top {
+            font-size: 22pt;
+            margin-bottom: 6mm;
+            letter-spacing: 8px;
+        }
+
+        .title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 52pt;
+            color: #c2185b;
+            line-height: 1.1;
+            margin-bottom: 8mm;
+            text-align: center;
+        }
+
+        .divider {
+            width: 55%;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #e91e63, transparent);
+            margin: 4mm 0;
+        }
+
+        .subtitle {
+            font-family: 'Poppins', sans-serif;
+            font-size: 14pt;
+            color: #ad1457;
+            font-weight: 300;
+            margin: 5mm 0;
+        }
+
+        .rose-big {
+            font-size: 72pt;
+            margin: 10mm 0;
+            line-height: 1;
+        }
+
+        .msg-box {
+            background: #fff5f8;
+            border: 2px solid #f8bbd0;
+            border-radius: 16px;
+            padding: 16mm 14mm;
+            max-width: 85%;
+            text-align: center;
+            margin: 6mm 0;
+        }
+
+        .msg-quote {
+            font-family: 'Playfair Display', serif;
+            font-size: 18pt;
+            color: #6a1b4d;
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        .flowers-bot {
+            font-size: 22pt;
+            margin-top: 6mm;
+            letter-spacing: 8px;
+        }
+
+        .footer-print {
+            font-family: 'Poppins', sans-serif;
+            font-size: 10pt;
+            color: #c2185b;
+            text-align: center;
+            margin-top: 12mm;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .date-print {
+            font-family: 'Poppins', sans-serif;
+            font-size: 9pt;
+            color: #ad1457;
+            text-align: center;
+            margin-top: 3mm;
+            opacity: 0.5;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <span class="corner c-tl">❧</span>
+        <span class="corner c-tr">❧</span>
+        <span class="corner c-bl">❧</span>
+        <span class="corner c-br">❧</span>
+
+        <div class="company">PROYECTOVISION</div>
+        <div class="flowers-top">🌸 ✨ 🌸</div>
+        <div class="title">Feliz Mes<br>de las Madres</div>
+        <div class="divider"></div>
+        <p class="subtitle">Con todo nuestro cariño y admiración 💐</p>
+        <div class="rose-big">🌹</div>
+        <div class="msg-box">
+            <p class="msg-quote">"${currentMessage.replace(/"/g, '&quot;')}"</p>
+        </div>
+        <div class="flowers-bot">🌹 💖 🌹</div>
+        <div class="footer-print">Con amor 💕 PROYECTOVISION 2026</div>
+        <div class="date-print">${fecha}</div>
+    </div>
+</body>
+</html>`;
+
+            const printWindow = window.open('', '_blank', 'width=800,height=1100');
+            printWindow.document.open();
+            printWindow.document.write(printHTML);
+            printWindow.document.close();
+
+            // Esperar a que carguen las fuentes y luego imprimir
+            printWindow.onload = function() {
+                setTimeout(() => {
+                    printWindow.focus();
+                    printWindow.print();
+                }, 800);
+            };
+
+            // Fallback si onload no se dispara
+            setTimeout(() => {
+                try {
+                    printWindow.focus();
+                    printWindow.print();
+                } catch(e) {}
+            }, 2000);
+        }
+
+        function createHeartBurst() {
+            const button = document.getElementById('roseButton');
+            const rect = button.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            const emojis = ['💖','💕','🌹','💗','🌸','✨','💝','🌺','💐','🌷'];
+
+            for (let i = 0; i < 12; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart-burst';
+                heart.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                const angle = (Math.PI * 2 * i) / 12;
+                const dist = 60 + Math.random() * 80;
+                heart.style.left = centerX + 'px';
+                heart.style.top = centerY + 'px';
+                heart.style.setProperty('--tx', Math.cos(angle) * dist + 'px');
+                heart.style.setProperty('--ty', Math.sin(angle) * dist + 'px');
+                heart.style.fontSize = (1 + Math.random() * 1.5) + 'rem';
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 1000);
+            }
+        }
+
+        function createSparkles() {
+            for (let i = 0; i < 8; i++) {
+                setTimeout(() => {
+                    const s = document.createElement('div');
+                    s.className = 'sparkle';
+                    s.style.left = Math.random() * window.innerWidth + 'px';
+                    s.style.top = Math.random() * window.innerHeight + 'px';
+                    const size = 4 + Math.random() * 6;
+                    s.style.width = size + 'px';
+                    s.style.height = size + 'px';
+                    document.body.appendChild(s);
+                    setTimeout(() => s.remove(), 1500);
+                }, i * 100);
+            }
+        }
+
+        document.getElementById('messageText').style.transition = 'all 0.3s ease';
+    </script>
+</body>
+</html>
